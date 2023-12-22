@@ -1,24 +1,41 @@
 'use client'
-import { Button } from '@/shadcn/ui/button'
+
+import * as React from 'react'
+import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import Image from 'next/image'
 
-const ModeToggle = () => {
-  const { setTheme, theme } = useTheme()
+import { Button } from '@/shadcn/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/shadcn/ui/dropdown-menu'
+
+function ModeToggle() {
+  const { setTheme } = useTheme()
+
   return (
-    <div className="flex items-center">
-      {theme === 'dark' && (
-        <Button variant="outline" size="icon" onClick={() => setTheme('light')}>
-          <Image src="/sun.png" alt="light mode" width={32} height={32} />
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon">
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
         </Button>
-      )}
-
-      {theme === 'light' && (
-        <Button variant="outline" size="icon" onClick={() => setTheme('dark')}>
-          <Image src="/half-moon.png" alt="light mode" width={32} height={32} />
-        </Button>
-      )}
-    </div>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme('light')}>
+          Claro
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('dark')}>
+          Oscuro
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('system')}>
+          Sistema
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
 

@@ -31,12 +31,12 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
-          // enableSystem
-          // disableTransitionOnChange
+          enableSystem
+          disableTransitionOnChange
         >
           <div className="pb-36">
             <Navbar />
-            {children}
+            <div className="flex justify-center">{children}</div>
           </div>
           <Footer />
         </ThemeProvider>

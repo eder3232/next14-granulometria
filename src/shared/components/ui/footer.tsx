@@ -3,8 +3,8 @@ import { SocialIcon } from 'react-social-icons'
 
 const Footer = () => {
   return (
-    <div className="h-36 absolute bottom-0 w-full">
-      <div className="container flex flex-col md:flex-row justify-center md:justify-between h-full items-center gap-6 border-t">
+    <div className="h-36 absolute bottom-0 w-full border-t">
+      <div className="container flex flex-col md:flex-row justify-center md:justify-between h-full items-center gap-6">
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
             <Image src="/bocchi_right.png" alt="logo" height={60} width={60} />
