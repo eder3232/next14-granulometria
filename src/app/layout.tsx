@@ -27,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn('relative h-screen', inter.className)}>
+      <body className={cn('relative min-h-screen', inter.className)}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
