@@ -3,7 +3,9 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { siteConfig } from '@/config/site'
 import { cn } from '../lib/utils'
-import Footer from '@/shared/components/footer'
+import Footer from '@/shared/components/ui/footer'
+import Navbar from '@/shared/components/ui/navbar'
+import { ThemeProvider } from '@/shared/providers/providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,10 +26,20 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={cn('relative h-screen', inter.className)}>
-        <div className="pb-36">{children}</div>
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          // enableSystem
+          // disableTransitionOnChange
+        >
+          <div className="pb-36">
+            <Navbar />
+            {children}
+          </div>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )
