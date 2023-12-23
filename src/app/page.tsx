@@ -1,9 +1,9 @@
-import TypographyH1 from '@/shared/components/typography/typography-h1'
+import TypographyH1 from '@/components/typography/typography-h1'
 import SelectMeshes from './_components/select-meshes'
 import GranulometriaTable from './_components/table'
 import LossMaterial from './_components/loss-material'
-import TypographyP from '@/shared/components/typography/typography-p'
-import TypographyH3 from '@/shared/components/typography/typography-h3'
+import TypographyP from '@/components/typography/typography-p'
+import TypographyH3 from '@/components/typography/typography-h3'
 
 export default function Home() {
   return (

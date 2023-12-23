@@ -1,4 +1,4 @@
-import { Button } from '@/shadcn/ui/button'
+import { Button } from '@/components/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/shadcn/ui/dialog'
+} from '@/components/ui/dialog'
 import ListMeshes from './list-meshes'
 
 const SelectMeshes = () => {

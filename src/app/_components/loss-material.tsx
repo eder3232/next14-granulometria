@@ -1,6 +1,6 @@
 'use client'
 
-import { Checkbox } from '@/shadcn/ui/checkbox'
+import { Checkbox } from '@/components/ui/checkbox'
 import React, { use } from 'react'
 import { useGranulometriaStore } from '../_store/store'
 

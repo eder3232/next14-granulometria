@@ -1,6 +1,6 @@
 'use client'
 import { useGranulometriaStore } from '../_store/store'
-import { Checkbox } from '@/shadcn/ui/checkbox'
+import { Checkbox } from '@/components/ui/checkbox'
 
 const ListMeshes = () => {
   const usedMeshes = useGranulometriaStore((state) => state.usedMeshes)

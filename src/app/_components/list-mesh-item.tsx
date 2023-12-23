@@ -1,4 +1,4 @@
-import { Checkbox } from '@/shadcn/ui/checkbox'
+import { Checkbox } from '@/components/ui/checkbox'
 
 const ListMeshItem = () => {
   return <div></div>

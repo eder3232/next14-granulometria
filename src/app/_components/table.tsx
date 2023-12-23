@@ -7,10 +7,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/shadcn/ui/table'
+} from '@/components/ui/table'
 import { use } from 'react'
 import { useGranulometriaStore } from '../_store/store'
-import { Button } from '@/shadcn/ui/button'
+import { Button } from '@/components/ui/button'
 import { MinusCircle, PlusCircle } from 'lucide-react'
 
 const GranulometriaTable = () => {
