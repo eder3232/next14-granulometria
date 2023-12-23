@@ -11,6 +11,8 @@ const LossMaterial = () => {
     (state) => state.isThereLossMaterial
   )
 
+  const initialWeight = useGranulometriaStore((state) => state.initialWeight)
+
   const switchLossMaterial = useGranulometriaStore(
     (state) => state.switchLossMaterial
   )
@@ -36,6 +38,7 @@ const LossMaterial = () => {
         className={cn('w-32', { hidden: !isThereLossMaterial })}
         placeholder="Peso total de las mallas"
         step="0.1"
+        defaultValue={initialWeight}
       />
     </div>
   )

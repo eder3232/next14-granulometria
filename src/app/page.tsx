@@ -1,3 +1,5 @@
+'use client'
+
 import TypographyH1 from '@/components/typography/typography-h1'
 import SelectMeshes from './_components/select-meshes'
 import GranulometriaTable from './_components/table'
@@ -5,8 +7,11 @@ import LossMaterial from './_components/loss-material'
 import TypographyP from '@/components/typography/typography-p'
 import TypographyH3 from '@/components/typography/typography-h3'
 import { Button } from '@/components/ui/button'
+import Errors from './_components/errors'
+import { useGranulometriaStore } from './_store/store'
 
 export default function Home() {
+  const calculate = useGranulometriaStore((state) => state.calculate)
   return (
     <main className="mt-10 container relative">
       <div className="flex flex-col items-start gap-4">
@@ -19,7 +24,7 @@ export default function Home() {
           <SelectMeshes />
           <p>
             Estos son los tamices normados ASTM, si deseas agregar alguno
-            adicional, puedes hacerlo directamente en la tabla.
+            adicional puedes hacerlo directamente en la tabla.
           </p>
         </div>
 
@@ -41,7 +46,13 @@ export default function Home() {
           </p>
           <GranulometriaTable />
 
-          <Button className="w-min font-bold text-lg" size="lg">
+          <Errors />
+
+          <Button
+            className="w-min font-bold text-lg"
+            size="lg"
+            onClick={() => calculate()}
+          >
             Calcular
           </Button>
         </div>
