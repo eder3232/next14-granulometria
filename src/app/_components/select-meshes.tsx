@@ -13,7 +13,9 @@ const SelectMeshes = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-min">Seleccionar mallas</Button>
+        <Button className="w-min font-bold text-xl" size="lg">
+          Seleccionar mallas
+        </Button>
       </DialogTrigger>
       <DialogContent className="h-96">
         <DialogHeader>

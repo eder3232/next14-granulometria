@@ -46,6 +46,11 @@ const Footer = () => {
             url="https://github.com/eder3232"
             target="_blank"
           />
+          <SocialIcon
+            style={{ height: 35, width: 35 }}
+            url="https://www.instagram.com/eder_3232/"
+            target="_blank"
+          />
         </div>
       </div>
     </div>

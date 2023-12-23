@@ -4,13 +4,16 @@ import GranulometriaTable from './_components/table'
 import LossMaterial from './_components/loss-material'
 import TypographyP from '@/components/typography/typography-p'
 import TypographyH3 from '@/components/typography/typography-h3'
+import { Button } from '@/components/ui/button'
 
 export default function Home() {
   return (
     <main className="mt-10 container relative">
       <div className="flex flex-col items-start gap-4">
         <TypographyH1>Granulometría</TypographyH1>
+
         <TypographyP>Porfavor llena los siguientes datos en orden:</TypographyP>
+
         <div className="flex flex-col gap-y-2">
           <TypographyH3>1. Selecciona los tamices a usar:</TypographyH3>
           <SelectMeshes />
@@ -19,6 +22,7 @@ export default function Home() {
             adicional, puedes hacerlo directamente en la tabla.
           </p>
         </div>
+
         <div>
           <TypographyH3>2. Perdida de material:</TypographyH3>
           <p>
@@ -28,7 +32,42 @@ export default function Home() {
           </p>
           <LossMaterial />
         </div>
-        <GranulometriaTable />
+
+        <div className="flex flex-col gap-2">
+          <TypographyH3>3. Pesos retenidos:</TypographyH3>
+          <p>
+            Llena los pesos retenidos en cada tamiz y presiona el boton
+            calcular.
+          </p>
+          <GranulometriaTable />
+
+          <Button className="w-min font-bold text-lg" size="lg">
+            Calcular
+          </Button>
+        </div>
+
+        <div>
+          <TypographyH3>3. Calcular:</TypographyH3>
+          <p>
+            Una vez que hayas llenado los datos, puedes calcular los resultados
+            de la granulometría.
+          </p>
+        </div>
+
+        <div>
+          <TypographyH3>4. Resultados:</TypographyH3>
+          <p>
+            Una vez que hayas llenado los datos, puedes calcular los resultados
+            de la granulometría.
+          </p>
+        </div>
+
+        <div>
+          <TypographyH3>5. Gráfico:</TypographyH3>
+          <p>Gráfico de granulometría</p>
+        </div>
+
+        <div className="h-32" />
       </div>
     </main>
   )

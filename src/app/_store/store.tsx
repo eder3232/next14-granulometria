@@ -52,7 +52,7 @@ const initialData = initialUsedMeshes
     return {
       astm: mesh.astm,
       iso: mesh.iso,
-      weight: 0,
+      weight: weight,
     }
   })
 
