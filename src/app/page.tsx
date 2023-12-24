@@ -9,9 +9,19 @@ import TypographyH3 from '@/components/typography/typography-h3'
 import { Button } from '@/components/ui/button'
 import Errors from './_components/errors'
 import { useGranulometriaStore } from './_store/store'
+import { useLayoutEffect } from 'react'
+import SelectDecimals from './_components/select-decimals'
 
 export default function Home() {
   const calculate = useGranulometriaStore((state) => state.calculate)
+
+  const errors = useGranulometriaStore((state) => state.errors)
+
+  useLayoutEffect(() => {
+    calculate()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <main className="mt-10 container relative">
       <div className="flex flex-col items-start gap-4">
@@ -44,6 +54,9 @@ export default function Home() {
             Llena los pesos retenidos en cada tamiz y presiona el boton
             calcular.
           </p>
+
+          <SelectDecimals />
+
           <GranulometriaTable />
 
           <Errors />
@@ -52,17 +65,10 @@ export default function Home() {
             className="w-min font-bold text-lg"
             size="lg"
             onClick={() => calculate()}
+            disabled={errors.filter((e) => e.severity == 'error').length > 0}
           >
             Calcular
           </Button>
-        </div>
-
-        <div>
-          <TypographyH3>3. Calcular:</TypographyH3>
-          <p>
-            Una vez que hayas llenado los datos, puedes calcular los resultados
-            de la granulometría.
-          </p>
         </div>
 
         <div>

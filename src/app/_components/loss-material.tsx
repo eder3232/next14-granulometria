@@ -17,6 +17,10 @@ const LossMaterial = () => {
     (state) => state.switchLossMaterial
   )
 
+  const onInitialWeightChange = useGranulometriaStore(
+    (state) => state.onInitialWeightChange
+  )
+
   return (
     <div className="flex flex-col">
       <div className="flex items-center gap-2">
@@ -33,13 +37,21 @@ const LossMaterial = () => {
         />
       </div>
 
-      <Input
-        type="number"
-        className={cn('w-32', { hidden: !isThereLossMaterial })}
-        placeholder="Peso total de las mallas"
-        step="0.1"
-        defaultValue={initialWeight}
-      />
+      <div
+        className={cn('flex gap-4 items-center', {
+          hidden: !isThereLossMaterial,
+        })}
+      >
+        <p>¿Cuánto era el peso inicial?</p>
+        <Input
+          type="number"
+          className="w-32 text-right"
+          placeholder="Peso total de las mallas"
+          step="0.1"
+          defaultValue={initialWeight}
+          onBlur={(e) => onInitialWeightChange(e.target.valueAsNumber)}
+        />
+      </div>
     </div>
   )
 }

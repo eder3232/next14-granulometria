@@ -18,3 +18,10 @@ export interface IReactData {
   iso: number
   weight: number
 }
+
+export interface IResults {
+  pesoCorregido: number
+  retenido: number
+  retenidoAcumulado: number
+  pasante: number
+}

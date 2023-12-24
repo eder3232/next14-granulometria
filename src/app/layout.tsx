@@ -6,6 +6,7 @@ import { cn } from '../lib/utils'
 import Footer from '@/components/shared/footer'
 import Navbar from '@/components/shared/navbar'
 import { ThemeProvider } from '@/shared/providers/providers'
+import { HydrationOverlay } from '@builder.io/react-hydration-overlay'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,19 +28,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn('relative min-h-screen', inter.className)}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="pb-36">
-            <Navbar />
-            <div className="flex justify-center">{children}</div>
-          </div>
-          <Footer />
-        </ThemeProvider>
+      <body
+        className={cn('relative min-h-screen antialiased', inter.className)}
+      >
+        <HydrationOverlay>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="pb-36">
+              <Navbar />
+              <div className="flex justify-center">{children}</div>
+            </div>
+            <Footer />
+          </ThemeProvider>
+        </HydrationOverlay>
       </body>
     </html>
   )
