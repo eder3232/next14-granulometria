@@ -4,7 +4,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 
 const ListMeshes = () => {
   const usedMeshes = useGranulometriaStore((state) => state.usedMeshes)
-  const markMeshAsUsed = useGranulometriaStore(
+  const switchMeshAsUsed = useGranulometriaStore(
     (state) => state.switchMeshAsUsed
   )
   return (
@@ -16,7 +16,7 @@ const ListMeshes = () => {
         >
           <Checkbox
             checked={mesh.isUsed}
-            onCheckedChange={() => markMeshAsUsed(mesh.astm)}
+            onCheckedChange={() => switchMeshAsUsed(mesh.astm)}
           />
           {mesh.astm}
         </div>

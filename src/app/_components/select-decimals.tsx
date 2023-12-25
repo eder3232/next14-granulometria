@@ -20,7 +20,7 @@ const SelectDecimals = () => {
       value={numberDecimals.toString()}
       onValueChange={(e) => onNumberDecimalsChange(+e)}
     >
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-24">
         <SelectValue placeholder="Número de decimales" />
       </SelectTrigger>
       <SelectContent>

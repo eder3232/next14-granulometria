@@ -11,7 +11,6 @@ import {
 import { MinusCircle, PlusCircle } from 'lucide-react'
 import { useGranulometriaStore } from '../_store/store'
 import { cn } from '@/lib/utils'
-import { useLayoutEffect } from 'react'
 
 const GranulometriaTable = () => {
   const data = useGranulometriaStore((state) => state.data)
@@ -21,6 +20,10 @@ const GranulometriaTable = () => {
   const numberDecimals = useGranulometriaStore((state) => state.numberDecimals)
 
   const errors = useGranulometriaStore((state) => state.errors)
+
+  const isThereLossMaterial = useGranulometriaStore(
+    (state) => state.isThereLossMaterial
+  )
 
   const onInputTableChangeString = useGranulometriaStore(
     (state) => state.onInputTableChangeString
@@ -47,7 +50,9 @@ const GranulometriaTable = () => {
               <TableHead className="eder-head-text">Tamiz</TableHead>
               <TableHead className="eder-head-text">Abertura</TableHead>
               <TableHead className="eder-head-text">Peso</TableHead>
-              <TableHead className="eder-head-text">Peso corregido</TableHead>
+              {isThereLossMaterial && (
+                <TableHead className="eder-head-text">Peso corregido</TableHead>
+              )}
               <TableHead className="eder-head-text">% Retenido</TableHead>
               <TableHead className="text-center eder-head-text">
                 % Retenido Acumulado
@@ -135,9 +140,11 @@ const GranulometriaTable = () => {
                   />
                 </TableCell>
 
-                <TableCell className="eder-result">
-                  {results[index].pesoCorregido.toFixed(numberDecimals)}
-                </TableCell>
+                {isThereLossMaterial && (
+                  <TableCell className="eder-result">
+                    {results[index].pesoCorregido.toFixed(numberDecimals)}
+                  </TableCell>
+                )}
 
                 <TableCell className="eder-result">
                   {results[index].retenido.toFixed(numberDecimals)}
@@ -157,18 +164,25 @@ const GranulometriaTable = () => {
 
             {errors.filter((e) => e.severity == 'error').length === 0 && (
               <TableRow>
-                <TableCell className="eder-result" colSpan={4}>
-                  {/* Total */}
+                <TableCell
+                  className="eder-result font-bold text-muted-foreground text-right"
+                  colSpan={4}
+                >
+                  {/* Total */} Totales:
                 </TableCell>
-                <TableCell className="font-bold text-muted-foreground">
-                  Totales:
-                </TableCell>
-
-                <TableCell className="text-right px-1">
-                  {results
-                    .reduce((c, a) => c + a.pesoCorregido, 0)
+                <TableCell className="px-1 text-right">
+                  {data
+                    .reduce((c, a) => c + a.weight, 0)
                     .toFixed(numberDecimals)}
                 </TableCell>
+
+                {isThereLossMaterial && (
+                  <TableCell className="text-right px-1">
+                    {results
+                      .reduce((c, a) => c + a.pesoCorregido, 0)
+                      .toFixed(numberDecimals)}
+                  </TableCell>
+                )}
 
                 <TableCell className="text-right px-1">
                   {results

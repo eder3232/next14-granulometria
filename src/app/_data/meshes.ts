@@ -1,6 +1,6 @@
 import { IMesh } from '../_interfaces/interfaces'
 
-export const astmMeshes: IMesh[] = [
+export const dataAstmMeshes: IMesh[] = [
   { astm: '5"', iso: 112, serie: 'gruesa', isUsual: false },
   { astm: '4"', iso: 100, serie: 'gruesa', isUsual: false },
   { astm: '3-1/2"', iso: 83, serie: 'gruesa', isUsual: false },
